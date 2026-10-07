@@ -1,9 +1,9 @@
 plugins {
     id 'maven-publish'
     id 'java'
-    id 'io.qameta.allure' version '2.11.2'
-    id 'org.ajoberstar.grgit' version '5.2.0'
-    id 'org.jreleaser' version '1.19.0'
+    id 'io.qameta.allure' version '4.3.0'
+    id 'org.ajoberstar.grgit' version '5.3.3'
+    id 'org.jreleaser' version '1.26.0'
     id("org.openapi.generator") version "7.18.0"
 }
 
@@ -28,7 +28,7 @@ def getCheckedOutGitCommitHash() {
 
 apply from: './publish-common.gradle'
 
-def lombokVersion = '1.18.30'
+def lombokVersion = '1.18.48'
 def lazysodiumVersion = '5.1.4'
 def jnaVersion = '5.15.0'
 def junitVersion = '5.10.0'
@@ -42,7 +42,7 @@ def jacksonNullableVersion = '0.2.6'
 
 // test dependencies
 def testngVersion = '7.7.0'
-def mockitoVersion = '5.5.0'
+def mockitoVersion = '5.24.0'
 def mockwebVersion = '4.12.0'
 
 dependencies {
@@ -135,7 +135,7 @@ tasks.register('testE2E', Test) {
     }
 
     afterSuite { desc, result ->
-        if (desc.parent == null) { // Kiểm tra nếu là toàn bộ test suite
+        if (desc.parent == null) { // KiÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»Ãƒâ€ Ã¢â‚¬â„¢m tra nÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚ÂºÃƒâ€šÃ‚Â¿u lÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â  toÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â n bÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ test suite
             def totalDuration  = (System.nanoTime() - suiteStartTime) / 1_000_000_000
             println "\n================================================================================="
             println "Test Summary:"
